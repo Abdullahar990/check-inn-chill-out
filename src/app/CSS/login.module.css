@@ -14,7 +14,17 @@
     flex-shrink: 0;
     border-radius: 70px;
     border: 1px solid #000;
-    opacity: 0.25;
-    background: var(--Background_colour, #81ADC7);
+    background: rgba(129, 173, 199, 0.25); /* Transparent background color only */
     box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+
+
+.img {
+    margin-top: -620px;
+    flex-shrink: 0;
+}
+
