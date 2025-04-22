@@ -1,68 +1,51 @@
 "use client";
 import React, { useState } from 'react';
-import styles from './CSS/login.module.css';
+import styles from '../CSS/login.module.css';
 import Image from 'next/image';
-import { Facebook, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Login attempt with:', { email, password, rememberMe });
     };
-
+    const router = useRouter();
     return (
         <div className={styles.container}>
             <div className={styles.loginCard}>
                 <div className={styles.logoContainer}>
                     <div className={styles.logo}>
-                    <Image src="/image.png" alt="Login Visual" width={180} height={180} />
+                        <Image src="/image.png" alt="Login Visual" width={180} height={180} priority />
                     </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <div className={styles.inputGroup}>
                         <label htmlFor="email" className={styles.label}>Username/Email</label>
-                        <input
-                            type="text"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className={styles.input}
-                            required
-                        />
+                        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.input} required />
                     </div>
 
                     <div className={styles.inputGroup}>
                         <label htmlFor="password" className={styles.label}>Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className={styles.input}
-                            required
-                        />
+                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className={styles.input} required />
                     </div>
 
                     <div className={styles.optionsRow}>
                         <div className={styles.checkboxContainer}>
-                            <input
-                                type="checkbox"
-                                id="remember"
-                                checked={rememberMe}
-                                onChange={(e) => setRememberMe(e.target.checked)}
-                                className={styles.checkbox}
-                            />
+                            <input type="checkbox" id="remember" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className={styles.checkbox}/>
                             <label htmlFor="remember" className={styles.checkboxLabel}>Remember me</label>
                         </div>
-                        <a href="#forgot-password" className={styles.forgotPassword}>Forgot Password?</a>
+                        <Link href="/forgot-password" className={styles.forgotPassword}>
+                            Forgot Password?
+                        </Link>
                     </div>
 
-                    <button type="submit" className={styles.loginButton}>Login</button>
+                    <button type="submit" onClick={() => router.push('/home')} className={styles.loginButton}>Login</button>
 
                     <div className={styles.socialLogin}>
                         <button type="button" className={`${styles.socialButton} ${styles.facebookButton}`}>
@@ -89,7 +72,9 @@ const Login = () => {
 
                     <div className={styles.signupContainer}>
                         <span className={styles.noAccount}>Don't have an account</span>
-                        <a href="#signup" className={styles.signupLink}>SignUp</a>
+                        <Link href="/signup" className={styles.signupLink}>
+                            SignUp
+                        </Link>
                     </div>
                 </form>
             </div>
