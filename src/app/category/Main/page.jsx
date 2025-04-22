@@ -1,8 +1,9 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import styles from '../CSS/home.module.css';
+import styles from '../../CSS/Main.module.css';
 import Image from 'next/image';
+
 const categoryIcons = [
     {
         id: 1,
@@ -53,23 +54,46 @@ const categoryIcons = [
         alt: 'Special Deals'
     }
 ];
-const CategoryBar = () => {
+
+const CategoryBar = ({ selectedCategory, onCategorySelect }) => {
     return (
         <div className={styles.categoryBar}>
             <div className={styles.categoryScroll}>
                 {categoryIcons.map((icon) => (
-                    <Link key={icon.id} href={'category/' + icon.name} className={styles.categoryItem} >
+                    <Link 
+                        key={icon.id} 
+                        href={`/${icon.name}`} 
+                        className={`${styles.categoryItem} ${selectedCategory === icon.name ? styles.selectedCategory : ''}`}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            onCategorySelect(icon.name);
+                        }}
+                    >
                         <div className={styles.categoryImageContainer}>
                             <Image src={icon.src} alt={icon.alt} width={24} height={24} className={styles.categoryIcon} />
                         </div>
+                        {selectedCategory === icon.name && (
+                            <span className={styles.categoryName}>{icon.alt}</span>
+                        )}
                     </Link>
                 ))}
             </div>
+            {selectedCategory && (
+                <div className={styles.categoryIndicator}>
+                    Currently browsing: {categoryIcons.find(icon => icon.name === selectedCategory)?.alt}
+                </div>
+            )}
         </div>
     );
 };
 
 const Home = () => {
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    
+    const handleCategorySelect = (categoryName) => {
+        setSelectedCategory(categoryName);
+    };
+
     const destinations = [
         {
             id: 1,
@@ -114,10 +138,8 @@ const Home = () => {
             image: '/Paris.png'
         }
     ];
-
-
+    
     return (
-        
         <div className={styles.container}>
             <header className={styles.header}>
                 <div className={styles.logo}>
@@ -141,27 +163,28 @@ const Home = () => {
                     </div>
                 </div>
             </header>
-                <CategoryBar />
 
-                <div className={styles.destinationsGrid}>
-                    {destinations.map((destination) => (
-                        <div key={destination.id} className={styles.destinationCard}>
-                            <div className={styles.cardImage}>
-                                <Image src={destination.image} alt={destination.location} layout="fill" objectFit="cover" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJ5N1EZEAAAAABJRU5ErkJggg==" />
-                            </div>
-                            <div className={styles.cardContent}>
-                                <h3 className={styles.location}>{destination.location}</h3>
-                                <p className={styles.price}>{destination.price}</p>
-                                <div className={styles.ratingStars}>
-                                    {[...Array(5)].map((_, i) => (
-                                        <span key={i} className={i < destination.rating ? styles.starFilled : styles.starEmpty}>★</span>
-                                    ))}
-                                </div>
+            <CategoryBar selectedCategory={selectedCategory} onCategorySelect={handleCategorySelect} />
+
+            <div className={styles.destinationsGrid}>
+                {destinations.map((destination) => (
+                    <div key={destination.id} className={styles.destinationCard}>
+                        <div className={styles.cardImage}>
+                            <Image src={destination.image} alt={destination.location} layout="fill" objectFit="cover" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJ5N1EZEAAAAABJRU5ErkJggg==" />
+                        </div>
+                        <div className={styles.cardContent}>
+                            <h3 className={styles.location}>{destination.location}</h3>
+                            <p className={styles.price}>{destination.price}</p>
+                            <div className={styles.ratingStars}>
+                                {[...Array(5)].map((_, i) => (
+                                    <span key={i} className={i < destination.rating ? styles.starFilled : styles.starEmpty}>★</span>
+                                ))}
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
+        </div>
     );
 };
 
