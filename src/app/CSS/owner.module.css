@@ -1,0 +1,192 @@
+.userInfoContainer {
+    background-color: #80b3c7;
+    border-radius: 16px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1400px;
+    margin: 60px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.userHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.userAvatar {
+    background-color: #eaf5f9;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.avatarIcon {
+    color: #0095c8;
+}
+
+.userDetails {
+    flex-grow: 1;
+}
+
+.userName {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.userId {
+    color: #e5f2f7;
+    font-size: 14px;
+}
+
+.userActions {
+    margin-left: auto;
+}
+
+.editButton {
+    background-color: #386680;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.plusIcon {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.userRoles {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.roleTab {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.activeTab {
+    background-color: #386680;
+    border-radius: 12px;
+}
+
+.commentsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #386680;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.commentCard {
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.commentImage {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.commentImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.commentContent {
+    padding: 20px;
+}
+
+.commentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.commentUser {
+    display: flex;
+    align-items: center;
+}
+
+.commentUserAvatar {
+    background-color: #eaf5f9;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.commentUserName {
+    font-size: 16px;
+    color: #333;
+}
+
+.commentTitle {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.commentText {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.ratingStars {
+    display: flex;
+}
+
+.star {
+    font-size: 24px;
+    color: #d1d1d1;
+    margin-right: 5px;
+}
+
+.activeStar {
+    color: #ffc107;
+}
+
+@media (max-width: 768px) {
+    .userInfoContainer {
+        margin: 0px;
+    }
+    
+    .commentCard {
+        flex-direction: column;
+    }
+
+    .commentImage {
+        height: 200px;
+    }
+}
