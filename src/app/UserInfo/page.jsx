@@ -1,11 +1,11 @@
 "use client"
 import React from 'react';
 import styles from '../CSS/userinfo.module.css';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import UserDetails from '../components/Userdetails';
+import UserRoles from '../components/UserRoles';
+import UserButton from '../components/UserButton';
 
-const UserInfo = ({ userName, userId, isOwner }) => {
-    const [activeTab, setActiveTab] = useState('guest');
+const UserInfo = ({ userName, userId }) => {
     const comments = [
         {
             id: 1,
@@ -26,45 +26,14 @@ const UserInfo = ({ userName, userId, isOwner }) => {
             image: "/Saopaulo.png"
         }
     ];
-    const router = useRouter();
+    
     return (
         <div className={styles.userInfoContainer}>
             <div className={styles.userHeader}>
-                <div className={styles.userAvatar}>
-                    <div className={styles.avatarIcon}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                </div>
-                <div className={styles.userDetails}>
-                    <h2 className={styles.userName}>{userName || "User Name"}</h2>
-                    <span className={styles.userId}>{userId || "User Id"}</span>
-                </div>
-                <div className={styles.userActions}>
-                    <button className={styles.editButton}>
-                        Edit Info
-                        <span className={styles.plusIcon}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </span>
-                    </button>
-                </div>
+                <UserDetails/>
+                <UserButton content="Edit Info" Icon="User" />
             </div>
-            <div className={styles.userRoles}>
-                <div className={`${styles.roleTab} ${activeTab === 'guest' ? styles.activeTab : ''}`}
-                    onClick={() => setActiveTab('guest')}>
-                    Guest
-                </div>
-                <div className={`${styles.roleTab} ${activeTab === 'owner' ? styles.activeTab : ''}`}
-                    onClick={() => {setActiveTab('owner');router.push('owner')}}>
-                    Owner
-                </div>
-            </div>
-
+            <UserRoles role='guest'/>
             <div className={styles.commentsContainer}>
                 {comments.map(comment => (
                     <div key={comment.id} className={styles.commentCard}>

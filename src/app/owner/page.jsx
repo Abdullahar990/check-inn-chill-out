@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from 'react';
 import styles from '../CSS/owner.module.css';
-import { Plus, Star } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import UserDetails from '../components/Userdetails'
+import UserRoles from '../components/UserRoles';
+import UserButton from '../components/UserButton';
 
-const Owner = () => {
-    const [activeTab, setActiveTab] = useState('owner');
+const Owner = ({ userName, userId}) => {
     const [hotels, setHotels] = useState([
         {
             id: 1,
@@ -27,42 +28,13 @@ const Owner = () => {
     const handleAddHotel = () => {
         console.log("Add hotel clicked");
     };
-    const router = useRouter();
     return (
         <div className={styles.userInfoContainer}>
             <div className={styles.userHeader}>
-                <div className={styles.userAvatar}>
-                    <div className={styles.avatarIcon}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                </div>
-                <div className={styles.userDetails}>
-                    <h2 className={styles.userName}>User Name</h2>
-                    <p className={styles.userId}>User Id</p>
-                </div>
-                <div className={styles.userActions}>
-                    <button className={styles.editButton} onClick={handleAddHotel}>
-                        Add Hotel
-                        <span className={styles.plusIcon}>
-                            <Plus size={20} />
-                        </span>
-                    </button>
-                </div>
+                <UserDetails />
+                <UserButton content = "Add Hotel" Icon="owner"/>
             </div>
-
-            <div className={styles.userRoles}>
-                <div className={`${styles.roleTab} ${activeTab === 'guest' ? styles.activeTab : ''}`}
-                    onClick={() => { setActiveTab('owner'); router.push('UserInfo') }}>
-                    Guest
-                </div>
-                <div className={`${styles.roleTab} ${activeTab === 'owner' ? styles.activeTab : ''}`}
-                    onClick={() => setActiveTab('owner')}>
-                    Owner
-                </div>
-            </div>
+            <UserRoles role='owner'/>
 
             <div className={styles.commentsContainer}>
                 {hotels.map(hotel => (

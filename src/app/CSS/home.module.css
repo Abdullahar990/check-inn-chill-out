@@ -21,117 +21,6 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #2c3e50;
-  white-space: nowrap;
-}
-
-.searchBox {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 999px;
-  padding: 0.5rem 1rem;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.searchInput {
-  border: none;
-  outline: none;
-  width: 100%;
-  padding: 0.25rem 0.5rem;
-  font-size: 1rem;
-  background: transparent;
-}
-
-.searchButton {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #555;
-  padding: 0.25rem;
-}
-
-.userInfo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: #2c3e50;
-  font-weight: 500;
-}
-
-.userAvatar {
-  background-color: #fff;
-  width: 36px;
-  /* Reduced from 40px */
-  height: 36px;
-  /* Reduced from 40px */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #4a6b82;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.categoryBar {
-  background-color: #4a6b82;
-  border-radius: 30px;
-  padding: 0.8rem 1.5rem;
-  /* Reduced vertical padding */
-  margin: 1.5rem auto;
-  /* Reduced margin */
-  overflow-x: auto;
-  scrollbar-width: none;
-  /* Firefox */
-  max-width: 100%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.categoryBar::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Edge */
-}
-
-.categoryScroll {
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
-  min-width: max-content;
-}
-
-.categoryItem {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 40px;
-  height: 32px;
-  /* Added explicit height */
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.categoryItem svg {
-  width: 20px;
-  /* Reduced from default 24px */
-  height: 20px;
-  /* Reduced from default 24px */
-}
-
-.categoryItem:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
 
 .destinationsGrid {
   display: grid;
@@ -202,41 +91,41 @@
 
 @media (max-width: 768px) {
   .header {
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 0.75rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
   }
 
   .searchBox {
-      max-width: 90%;
-      margin: 0.5rem 0;
+    max-width: 90%;
+    margin: 0.5rem 0;
   }
 
   .categoryBar {
-      max-width: 100%;
-      border-radius: 20px;
-      padding: 0.5rem 1rem;
+    max-width: 100%;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
   }
 
   .categoryScroll {
-      gap: 2rem;
+    gap: 2rem;
   }
 
   .destinationsGrid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin: 2rem 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 1rem;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .destinationsGrid {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .searchBox {
-      max-width: 350px;
-      /* Adjusted for tablet */
+    max-width: 350px;
+    /* Adjusted for tablet */
   }
 }
 
@@ -268,77 +157,17 @@
   transform: translateY(-2px);
 }
 
-/* Add these styles to your bed.module.css file */
 
-.selectedCategory {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 20px;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.categoryItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 8px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-  padding: 6px;
-  position: relative;
-}
-
-.categoryItem:hover {
-  transform: translateY(-2px);
-}
-
-.categoryImageContainer {
-  display: flex;
+.viewDetail {
+  background-color: #f9f9f7;
   justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 4px;
-}
-
-.categoryName {
-  color: white;
-  font-size: 12px;
-  margin-top: 4px;
-  font-weight: 500;
-}
-
-.categoryIndicator {
-  text-align: center;
-  margin-top: 12px;
-  font-size: 14px;
-  padding: 8px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  font-weight: 500;
-}
-
-/* Improve spacing and scrolling */
-.categoryScroll {
   display: flex;
-  overflow-x: auto;
-  padding: 16px 8px;
-  scrollbar-width: thin;
-  -ms-overflow-style: none;
-  scroll-behavior: smooth;
+  border-radius: 11px;
+  width: 162px;
+  margin-left: 60px;
 }
 
-.categoryScroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.categoryScroll::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+.viewContent {
+  color: #2c3e50;
+  font-weight: 900;
 }

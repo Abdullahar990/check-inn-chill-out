@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
-import Categorybar from '../components/Categorybar';
-import styles from '../CSS/home.module.css';
+import Categorybar from '../../components/Categorybar';
+import styles from '../../CSS/home.module.css';
 import Image from 'next/image';
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/navigation';
 
 const Home = () => {
@@ -54,16 +54,16 @@ const Home = () => {
     const router = useRouter();
     const handleCategoryClick = (category) => {
         console.log("Category clicked:", category);
-        router.push(`/home/${category}`); 
+        router.push(`/home/${category}`);
     };
     return (
 
         <div className={styles.container}>
             <header className={styles.header}>
-                <Navbar/>
+                <Navbar />
             </header>
             <Categorybar onCategoryClick={handleCategoryClick}/>
-            
+
             <div className={styles.destinationsGrid}>
                 {destinations.map((destination) => (
                     <div key={destination.id} className={styles.destinationCard}>
