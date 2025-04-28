@@ -1,3 +1,7 @@
+.userProfile {
+    display: flex;
+    align-items: center;
+}
 .userAvatar {
     background-color: #eaf5f9;
     width: 70px;

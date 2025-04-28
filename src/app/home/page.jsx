@@ -54,16 +54,14 @@ const Home = () => {
     const router = useRouter();
     const handleCategoryClick = (category) => {
         console.log("Category clicked:", category);
-        router.push(`/home/${category}`); 
+        router.push(`/home/${category}`);
     };
     return (
 
         <div className={styles.container}>
-            <header className={styles.header}>
-                <Navbar/>
-            </header>
-            <Categorybar onCategoryClick={handleCategoryClick}/>
-            
+            <Navbar />
+            <Categorybar onCategoryClick={handleCategoryClick} />
+
             <div className={styles.destinationsGrid}>
                 {destinations.map((destination) => (
                     <div key={destination.id} className={styles.destinationCard}>

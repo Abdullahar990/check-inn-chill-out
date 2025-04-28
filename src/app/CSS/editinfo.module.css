@@ -16,10 +16,7 @@
     margin-bottom: 20px;
 }
 
-.userProfile {
-    display: flex;
-    align-items: center;
-}
+
 
 .avatar {
     width: 60px;
